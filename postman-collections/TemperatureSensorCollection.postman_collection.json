@@ -1,0 +1,98 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TemperatureSensorCollection",
+		"_postman_id": "0ef75039-e414-8d53-2dcc-8580b1a3553f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Temperature Record",
+			"request": {
+				"url": "http://localhost:8191/api/v1/temperature",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deviceId\": 2,\n\t\"temperatureInFahrenheit\": 98.4,\n\t\"recordedTimestamp\": 1623784100\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Temperature Records bulk",
+			"request": {
+				"url": "http://localhost:8191/api/v1/temperature/bulk",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n\t\"deviceId\": 2,\n\t\"temperatureInFahrenheit\": 98.4,\n\t\"recordedTimestamp\": 1624039586\n},\n{\n\t\"deviceId\": 2,\n\t\"temperatureInFahrenheit\": 97.4,\n\t\"recordedTimestamp\": 1623870500\n},\n{\n\t\"deviceId\": 2,\n\t\"temperatureInFahrenheit\": 98.5,\n\t\"recordedTimestamp\": 1623956900\n}\n]"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Temperature Records",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8191/api/v1/temperature?endTime=1624039586&deviceId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8191",
+					"path": [
+						"api",
+						"v1",
+						"temperature"
+					],
+					"query": [
+						{
+							"key": "endTime",
+							"value": "1624039586",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "deviceId",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\n\t\"deviceId\": 2,\n\t\"temperatureInFahrenheit\": 98.4,\n\t\"recordedTimestamp\": 1624039586\n},\n{\n\t\"deviceId\": 2,\n\t\"temperatureInFahrenheit\": 97.4,\n\t\"recordedTimestamp\": 1623870500\n},\n{\n\t\"deviceId\": 2,\n\t\"temperatureInFahrenheit\": 98.5,\n\t\"recordedTimestamp\": 1623956900\n}\n]"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
